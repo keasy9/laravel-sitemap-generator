@@ -102,17 +102,22 @@ class SitemapGeneratorService
             return null;
         }
 
-        return Carbon::createFromTimestamp(filemtime(config('sitemap-generator.index_sitemap_filename')));
+        return Carbon::createFromTimestamp(filemtime($this->getSitemapPath()));
     }
 
     public function isSitemapExists(): bool
     {
-        return file_exists(config('sitemap-generator.index_sitemap_filename'));
+        return file_exists($this->getSitemapPath());
     }
 
     public function getSitemapUrl(): string
     {
         return url(config('sitemap-generator.index_sitemap_filename'));
+    }
+
+    public function getSitemapPath(): string
+    {
+        return public_path(config('sitemap-generator.index_sitemap_filename'));
     }
 
     protected function writeSitemapFile(string $path, string $sitemapContent): bool
