@@ -14,9 +14,7 @@ use Keasy9\SitemapGenerator\Interfaces\SitemapSourceInterface;
 trait SitemapSource
 {
     /**
-     * @param int $perPage
-     * @param int $page
-     * @return Collection<SitemapSourceInterface>
+     * @inheritDoc
      */
     public static function getSitemapList(int $perPage, int $page): Collection
     {

@@ -5,9 +5,11 @@ namespace Keasy9\SitemapGenerator\Services;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Log;
+use Keasy9\SitemapGenerator\Interfaces\SitemapSourceInterface;
 
 class SitemapGeneratorService
 {
+    /** @var array<array-key, SitemapSourceInterface> */
     protected array $sources = [];
 
     public function registerSource(string $source): static
@@ -37,7 +39,7 @@ class SitemapGeneratorService
                     $tags[] = [
                         'tag'        => 'url',
                         'loc'        => $item->getSitemapUrl(),
-                        'lastmod'    => $item->getSitemapLastMod(),
+                        'lastmod'    => $item->getSitemapLastMod()->toW3cString(),
                         'changefreq' => $item->getSitemapChangeFreq(),
                         'priority'   => $item->getSitemapPriority(),
                     ];

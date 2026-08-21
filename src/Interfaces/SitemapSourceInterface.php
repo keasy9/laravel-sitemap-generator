@@ -16,5 +16,10 @@ interface SitemapSourceInterface
 
     public function getSitemapChangefreq(): ?SitemapChangeFreqEnum;
 
+    /**
+     * @param int $perPage
+     * @param int $page
+     * @return Collection<array-key, SitemapSourceInterface>
+     */
     public static function getSitemapList(int $perPage, int $page): Collection;
 }

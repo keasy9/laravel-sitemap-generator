@@ -45,6 +45,9 @@ class SitemapUrl extends Model implements SitemapSourceInterface
         return SitemapChangeFreqEnum::tryFrom($this->changefreq);
     }
 
+    /**
+     * @inheritDoc
+     */
     public static function getSitemapList(int $perPage, int $page): Collection
     {
         return static::limit($perPage)
